@@ -1,5 +1,3 @@
-require 'wand'
-
 class AttachmentOptions
 
   attr_accessor :styles, :assigned_file, :object_id, :name
@@ -36,10 +34,14 @@ class AttachmentOptions
 
     @model.send("#{@name.to_s}_file_name=", @filename)
     @model.send("#{@name.to_s}_file_size=", File.size(file))
-    @model.send("#{@name.to_s}_content_type=", Wand.wave(file.path))
+    @model.send("#{@name.to_s}_content_type=", content_type(file.path))
     @model.send("#{@name.to_s}_updated_at=", Time.now)
 
     add_error('Could not resize file') unless file_is_resizale?
+  end
+
+  def content_type(file_path)
+    MIME::Types.type_for(file_path)[0].to_s
   end
 
   def url(style_name = 'original')

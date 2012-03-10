@@ -24,7 +24,6 @@ spec = Gem::Specification.new do |s|
   s.rubyforge_project = "mm-attach_it"
   s.extra_rdoc_files  = Dir["README*"]
   s.requirements << "ImageMagick"
-  s.add_dependency 'wand', '~> 0.4'
   s.add_dependency 'mongo_mapper', '>= 0.9.0'
   s.add_dependency 'rmagick'
   s.add_dependency 'mime-types'
