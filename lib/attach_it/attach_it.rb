@@ -1,3 +1,5 @@
+require 'mime/types'
+
 module AttachIt
 
   extend ActiveSupport::Concern
